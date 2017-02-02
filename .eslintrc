@@ -1,0 +1,8 @@
+{
+  "extends": "unsplash",
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "node": true
+  }
+}
