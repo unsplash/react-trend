@@ -4,10 +4,10 @@ const propTypes = {
   data: PropTypes.arrayOf(PropTypes.number),
 };
 
-const Trend = ({ data }) => {
-  return (
-    <span>{data.join(', ')}</span>
-  );
-};
+const Trend = ({ data }) => (
+  <svg />
+);
 
-export default Trend
+Trend.propTypes = propTypes;
+
+export default Trend;

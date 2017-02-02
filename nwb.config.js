@@ -5,8 +5,8 @@ module.exports = {
     umd: {
       global: 'Trend',
       externals: {
-        react: 'React'
-      }
-    }
-  }
-}
+        react: 'React',
+      },
+    },
+  },
+};
