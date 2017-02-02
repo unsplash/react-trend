@@ -16,13 +16,15 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {},
   "peerDependencies": {
     "react": ""
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.35.3",
     "nwb": "0.15.x",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
