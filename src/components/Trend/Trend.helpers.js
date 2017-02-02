@@ -18,7 +18,7 @@ export const normalize = ({ point, min, max, scaleMin, scaleMax }) => (
   scaleMin + (point - min) * (scaleMax - scaleMin) / (max - min)
 );
 
-export const normalizeDataset = (data, { maxX, maxY }) => {
+export const normalizeDataset = (data, { minX, maxX, minY, maxY }) => {
   // For the X axis, we want to normalize it based on its index in the array.
   // For the Y axis, we want to normalize it based on the element's value.
   //
@@ -33,14 +33,14 @@ export const normalizeDataset = (data, { maxX, maxY }) => {
       point: index,
       min: boundariesX.min,
       max: boundariesX.max,
-      scaleMin: 0,
+      scaleMin: minX,
       scaleMax: maxX,
     }),
     y: normalize({
       point,
       min: boundariesY.min,
       max: boundariesY.max,
-      scaleMin: 0,
+      scaleMin: minY,
       scaleMax: maxY,
     }),
   }));

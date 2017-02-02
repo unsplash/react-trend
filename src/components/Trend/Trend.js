@@ -11,8 +11,12 @@ const VIEWBOX_WIDTH = 100;
 
 const Trend = ({ data }) => {
   const normalizedData = normalizeDataset(data, {
-    maxY: VIEWBOX_HEIGHT,
+    minX: 0,
     maxX: VIEWBOX_WIDTH,
+    // NOTE: Because SVGs are indexed from the top left, but most data is
+    // indexed from the bottom left, we're inverting the Y min/max.
+    minY: VIEWBOX_HEIGHT,
+    maxY: 0,
   });
 
   const path = buildPath(normalizedData);
