@@ -18,7 +18,7 @@ export const normalize = ({ point, min, max, scaleMin, scaleMax }) => (
   scaleMin + (point - min) * (scaleMax - scaleMin) / (max - min)
 );
 
-export function normalizeDataset(data, { maxX, maxY }) {
+export const normalizeDataset = (data, { maxX, maxY }) => {
   // For the X axis, we want to normalize it based on its index in the array.
   // For the Y axis, we want to normalize it based on the element's value.
   //
@@ -44,4 +44,15 @@ export function normalizeDataset(data, { maxX, maxY }) {
       scaleMax: maxY,
     }),
   }));
-}
+};
+
+export const buildPath = (data, defaultInstruction = 'L') => (
+  data.reduce((path, { x, y }, index) => {
+    // The very first instruction needs to be a "move".
+    // The rest will be some kind of line/curve to.
+    const isFirstInstruction = index === 0;
+    const instruction = isFirstInstruction ? 'M' : defaultInstruction;
+
+    return `${path}${instruction} ${x},${y}\n`;
+  }, '')
+);

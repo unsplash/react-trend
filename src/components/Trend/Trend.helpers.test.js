@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import { getBoundaries, normalizeDataset } from './Trend.helpers';
+import { getBoundaries, normalizeDataset, buildPath } from './Trend.helpers';
 
 describe('Trend Helpers', () => {
   describe('getBoundaries', () => {
@@ -68,6 +68,51 @@ describe('Trend Helpers', () => {
         { x: 100, y: 2.5 },
       ];
       const actualResult = normalizeDataset(data, { maxX, maxY });
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+  });
+
+  describe('buildPath', () => {
+    it('builds a simple 2-point path', () => {
+      const data = [
+        { x: 0, y: 0 },
+        { x: 10, y: 20 },
+      ];
+
+      const expectedResult = `M 0,0\nL 10,20\n`;
+      const actualResult = buildPath(data);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('builds a 5-point path', () => {
+      const data = [
+        { x: 0, y: 0 },
+        { x: 10, y: 20 },
+        { x: 20, y: 40 },
+        { x: 10, y: 20 },
+        { x: 0, y: 0 },
+      ];
+
+      const expectedResult = `M 0,0\nL 10,20\nL 20,40\nL 10,20\nL 0,0\n`;
+      const actualResult = buildPath(data);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('overrides default instruction', () => {
+      const data = [
+        { x: 0, y: 0 },
+        { x: 10, y: 20 },
+        { x: 20, y: 40 },
+        { x: 10, y: 20 },
+        { x: 0, y: 0 },
+      ];
+      const instruction = 'C';
+
+      const expectedResult = `M 0,0\nC 10,20\nC 20,40\nC 10,20\nC 0,0\n`;
+      const actualResult = buildPath(data, instruction);
 
       expect(actualResult).toEqual(expectedResult);
     });
