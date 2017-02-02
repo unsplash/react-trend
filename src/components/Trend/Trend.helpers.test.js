@@ -117,7 +117,7 @@ describe('Trend Helpers', () => {
       ];
       const instruction = 'C';
 
-      const expectedResult = `M 0,0\nC 10,20\nC 20,40\nC 10,20\nC 0,0\n`;
+      const expectedResult = `M 0,0\nC 10,20 20,40\nC 10,20 0,0\n`;
       const actualResult = buildPath(data, instruction);
 
       expect(actualResult).toEqual(expectedResult);
