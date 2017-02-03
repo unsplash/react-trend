@@ -63,4 +63,15 @@ storiesOf('Trend', module)
       />
 
     );
-  });
+  })
+  .add('with a 2-color gradient', () => (
+    <Trend
+      rounded
+      color={['#004358', '#BEDB39']}
+      strokeWidth={5}
+      radius={10}
+      data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0, 4, 0, 3, 7, 3, 4, 3, 2, 6, 9]}
+      style={{ display: 'block' }}
+    />
+
+  ));

@@ -19,7 +19,7 @@ export const getBoundaries = data => (
   }, { min: Infinity, max: -Infinity })
 );
 
-export const normalize = ({ point, min, max, scaleMin, scaleMax }) => (
+export const normalize = ({ point, min, max, scaleMin = 0, scaleMax = 1 }) => (
   scaleMin + (point - min) * (scaleMax - scaleMin) / (max - min)
 );
 
