@@ -14,4 +14,9 @@ module.exports = {
     // tests (and, thus, coverage). We don't need to test our utility functions
     testDirs: ['src/utils'],
   },
+  webpack: {
+    compat: {
+      enzyme: true,
+    },
+  },
 };

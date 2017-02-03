@@ -128,6 +128,11 @@ class Trend extends Component {
       strokeDashoffset,
     } = this.props;
 
+    // We need at least 2 points to draw a graph.
+    if (!data || data.length < 2) {
+      return null;
+    }
+
     // Our viewbox needs to be in absolute units, so we'll default to 300x75
     // Our SVG can be a %, though; this is what makes it scalable.
     // By defaulting to percentages, the SVG will grow to fill its parent

@@ -26,12 +26,14 @@
     "react": ""
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.35.3",
+    "@kadira/storybook": "2.35.3",
+    "enzyme": "2.7.1",
     "eslint": "3.10.2",
     "eslint-config-unsplash": "0.2.2",
     "nwb": "0.14.3",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "15.4.2",
+    "react-addons-test-utils": "15.4.2",
+    "react-dom": "15.4.2"
   },
   "author": "",
   "homepage": "",

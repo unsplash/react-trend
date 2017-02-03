@@ -59,6 +59,15 @@ describe('DOM Helpers', () => {
   });
 
   describe('injectStyleTag', () => {
+    before(() => {
+      const parent = document.querySelector('head');
+      const styleTag = document.querySelector('style');
+
+      if (styleTag) {
+        parent.removeChild(styleTag);
+      }
+    });
+
     context('when no style tag currently exists', () => {
       it('creates and injects a brand new style tag', () => {
         expect(document.querySelector('style')).toEqual(null);
