@@ -1,5 +1,5 @@
 # 📈 React Trend
-### Simple "trending" graph generator
+### Elegant, simple _trend_ graphs
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
@@ -58,6 +58,20 @@ const MyComponent = () => (
 ```
 
 ### API Reference
+
+#### SVG Props
+
+By default, all properties not recognized by React Trend will be delegated to the SVG. The line inherits these properties if none of its own override them.
+
+This means that, among other properties, you can use:
+
+- `stroke` to set a solid colour,
+- `strokeWidth` to change the default line thickness,
+- `strokeOpacity` to create a transparent line,
+- `strokeLinecap`/`strokeLinejoin` to control the edges of your line,
+- `strokeDasharray` to create a dashed line, and
+- `strokeDashoffset` to control where the dashes start.
+
 
 #### `autoDraw`
 | Type    | Required | Default|
