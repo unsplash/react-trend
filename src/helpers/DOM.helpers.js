@@ -1,4 +1,5 @@
 import {
+  moveTo,
   getDistanceBetween,
   checkForCollinearPoints,
 } from './math.helpers';
@@ -14,7 +15,7 @@ export const buildLinearPath = data => (
   }, '')
 );
 
-export const buildRoundedPath = (data, { radius }) => {
+export const buildSmoothPath = (data, { radius }) => {
   const [firstPoint, ...otherPoints] = data;
 
   return otherPoints.reduce((path, point, index) => {
@@ -50,21 +51,12 @@ export const buildRoundedPath = (data, { radius }) => {
   }, `M ${firstPoint.x},${firstPoint.y}`);
 };
 
-export const buildPath = (data, { instruction = 'linear', ...metadata } = {}) => {
-  switch (instruction) {
-    case 'linear': return buildLinearPath(data, metadata);
-    case 'rounded': return buildRoundedPath(data, metadata);
-    default:
-      throw new Error(`Unrecognized instruction ${instruction}.`);
-  }
-};
-
 // Taken from Khan Academy's Aphrodite
 // https://github.com/Khan/aphrodite/blob/master/src/inject.js
 let styleTag;
 export const injectStyleTag = (cssContents) => {
   if (styleTag == null) {
-    // Try to find a style tag with the `data-aphrodite` attribute first.
+    // Try to find a style tag with the `data-react-trend` attribute first.
     styleTag = document.querySelector('style[data-react-trend]');
 
     // If that doesn't work, generate a new style tag.
@@ -75,14 +67,10 @@ export const injectStyleTag = (cssContents) => {
       styleTag = document.createElement('style');
 
       styleTag.type = 'text/css';
-      styleTag.setAttribute('data-aphrodite', '');
+      styleTag.setAttribute('data-react-trend', '');
       head.appendChild(styleTag);
     }
   }
 
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += cssContents;
-  } else {
-    styleTag.appendChild(document.createTextNode(cssContents));
-  }
+  styleTag.appendChild(document.createTextNode(cssContents));
 };

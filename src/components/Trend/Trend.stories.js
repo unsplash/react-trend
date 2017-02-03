@@ -9,7 +9,7 @@ storiesOf('Trend', module)
   .addDecorator(createContainerDecorator())
   .add('with 3 points', () => (
     <Trend
-      rounded
+      smooth
       data={[0, 10, 9, 0]}
       style={{ display: 'block' }}
     />
@@ -36,16 +36,16 @@ storiesOf('Trend', module)
       style={{ display: 'block' }}
     />
   ))
-  .add('with rounded corners (default radius)', () => (
+  .add('with smooth corners (default radius)', () => (
     <Trend
-      rounded
+      smooth
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
   ))
-  .add('with rounded corners (huge radius)', () => (
+  .add('with smooth corners (huge radius)', () => (
     <Trend
-      rounded
+      smooth
       radius={50}
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
@@ -56,7 +56,7 @@ storiesOf('Trend', module)
 
     return (
       <Trend
-        rounded
+        smooth
         radius={5}
         data={data}
         style={{ display: 'block' }}
@@ -66,7 +66,7 @@ storiesOf('Trend', module)
   })
   .add('with a 2-color gradient', () => (
     <Trend
-      rounded
+      smooth
       color={['#004358', '#BEDB39']}
       strokeWidth={5}
       radius={10}

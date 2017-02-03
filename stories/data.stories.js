@@ -26,14 +26,35 @@ storiesOf('Trend data', module)
       style={{ display: 'block' }}
     />
   ))
+  .add('single point (smooth)', () => (
+    <Trend
+      smooth
+      data={[20]}
+      style={{ display: 'block' }}
+    />
+  ))
   .add('two points', () => (
     <Trend
       data={[0, 100]}
       style={{ display: 'block' }}
     />
   ))
+  .add('two points (smooth)', () => (
+    <Trend
+      smooth
+      data={[0, 100]}
+      style={{ display: 'block' }}
+    />
+  ))
   .add('three points', () => (
     <Trend
+      data={[100, 0, 100]}
+      style={{ display: 'block' }}
+    />
+  ))
+  .add('three points (smooth)', () => (
+    <Trend
+      smooth
       data={[100, 0, 100]}
       style={{ display: 'block' }}
     />

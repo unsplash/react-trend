@@ -28,7 +28,7 @@ export const normalize = ({ value, min, max, scaleMin = 0, scaleMax = 1 }) => (
  *
  * @returns {Object} an object holding the x/y coordinates of the midpoint.
  */
-const moveTo = (to, from, radius) => {
+export const moveTo = (to, from, radius) => {
   const vector = { x: to.x - from.x, y: to.y - from.y };
   const length = Math.sqrt((vector.x * vector.x) + (vector.y * vector.y));
   const unitVector = { x: vector.x / length, y: vector.y / length };

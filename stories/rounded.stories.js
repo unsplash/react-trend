@@ -5,18 +5,18 @@ import { storiesOf } from '@kadira/storybook';
 import { createContainerDecorator } from './helpers/decorators';
 import Trend from '../src/components/Trend';
 
-storiesOf('Trend rounded', module)
+storiesOf('Trend smooth', module)
   .addDecorator(createContainerDecorator())
   .add('default', () => (
     <Trend
-      rounded
+      smooth
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
   ))
   .add('with thicker line', () => (
     <Trend
-      rounded
+      smooth
       strokeWidth={10}
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
@@ -24,7 +24,18 @@ storiesOf('Trend rounded', module)
   ))
   .add('with round linecap and linejoin', () => (
     <Trend
-      rounded
+      smooth
+      strokeWidth={10}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
+      style={{ display: 'block' }}
+    />
+  ))
+  .add('with oversized radius', () => (
+    <Trend
+      smooth
+      radius={2000}
       strokeWidth={10}
       strokeLinecap="round"
       strokeLinejoin="round"

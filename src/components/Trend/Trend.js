@@ -1,18 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 
+import { omit } from '../../utils';
+import {
+  injectStyleTag,
+  buildSmoothPath,
+  buildLinearPath,
+} from '../../helpers/DOM.helpers';
 import { normalize } from '../../helpers/math.helpers';
-import { injectStyleTag, buildPath } from '../../helpers/DOM.helpers';
 import { generateId } from '../../helpers/misc.helpers';
 import { normalizeDataset } from './Trend.helpers';
 
 const propTypes = {
   data: PropTypes.arrayOf(PropTypes.number),
-  rounded: PropTypes.bool,
+  smooth: PropTypes.bool,
   autoDraw: PropTypes.bool,
   autoDrawDuration: PropTypes.number,
   autoDrawEasing: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
+  padding: PropTypes.number,
   radius: PropTypes.number,
   color: PropTypes.oneOfType([
     PropTypes.string,
@@ -21,23 +27,23 @@ const propTypes = {
   strokeWidth: PropTypes.number,
   strokeLinecap: PropTypes.string,
   strokeLinejoin: PropTypes.string,
+  strokeDashoffset: PropTypes.number,
   strokeDasharray: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.number),
   ]),
-  strokeDashoffset: PropTypes.number,
 };
 
 const defaultProps = {
   radius: 10,
   color: 'black',
+  padding: 8,
   strokeWidth: 1,
   autoDraw: false,
   autoDrawDuration: 2000,
   autoDrawEasing: 'ease',
 };
 
-const VIEWBOX_PADDING = 8;
 const GRADIENT_ID = 'react-trend-vertical-gradient';
 
 class Trend extends Component {
@@ -53,7 +59,7 @@ class Trend extends Component {
   componentDidMount() {
     const { autoDraw, autoDrawDuration, autoDrawEasing } = this.props;
 
-    if (this.props.autoDraw) {
+    if (autoDraw) {
       const lineLength = this.path.getTotalLength();
 
       const css = `
@@ -76,6 +82,10 @@ class Trend extends Component {
     }
   }
 
+  getDelegatedProps() {
+    return omit(this.props, Object.keys(propTypes));
+  }
+
   renderGradientDefinition() {
     const { color } = this.props;
 
@@ -90,7 +100,7 @@ class Trend extends Component {
             <stop
               key={index}
               offset={normalize({
-                point: index,
+                value: index,
                 min: 0,
                 max: color.length - 1,
               })}
@@ -105,10 +115,10 @@ class Trend extends Component {
   render() {
     const {
       data,
-      rounded,
-      autoDraw,
+      smooth,
       width,
       height,
+      padding,
       radius,
       color,
       strokeWidth,
@@ -116,7 +126,6 @@ class Trend extends Component {
       strokeLinejoin,
       strokeDasharray,
       strokeDashoffset,
-      ...delegated
     } = this.props;
 
     // Our viewbox needs to be in absolute units, so we'll default to 300x75
@@ -129,18 +138,19 @@ class Trend extends Component {
     const svgHeight = height || '25%';
 
     const normalizedData = normalizeDataset(data, {
-      minX: VIEWBOX_PADDING,
-      maxX: viewBoxWidth - VIEWBOX_PADDING,
+      minX: padding,
+      maxX: viewBoxWidth - padding,
       // NOTE: Because SVGs are indexed from the top left, but most data is
       // indexed from the bottom left, we're inverting the Y min/max.
-      minY: viewBoxHeight - VIEWBOX_PADDING,
-      maxY: VIEWBOX_PADDING,
+      minY: viewBoxHeight - padding,
+      maxY: padding,
     });
 
-    // Use a 'smooth curve' instruction if we want it rounded.
+    // Use a 'smooth curve' instruction if we want it smooth.
     // Otherwise, use 'line';
-    const instruction = rounded ? 'rounded' : 'linear';
-    const path = buildPath(normalizedData, { instruction, radius });
+    const path = smooth ?
+      buildSmoothPath(normalizedData, { radius }) :
+      buildLinearPath(normalizedData);
 
     const useGradient = typeof color !== 'string';
 
@@ -149,7 +159,7 @@ class Trend extends Component {
         width={svgWidth}
         height={svgHeight}
         viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
-        {...delegated}
+        {...this.getDelegatedProps()}
       >
         {this.renderGradientDefinition()}
 
@@ -162,8 +172,8 @@ class Trend extends Component {
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
           strokeLinejoin={strokeLinejoin}
-          strokeDasharray={autoDraw === false ? strokeDasharray : undefined}
-          strokeDashoffset={autoDraw === false ? strokeDashoffset : undefined}
+          strokeDasharray={strokeDasharray}
+          strokeDashoffset={strokeDashoffset}
         />
       </svg>
     );
