@@ -1,15 +1,6 @@
-import React from 'react'
-import {render} from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
 
-import Component from '../../src'
+import App from './components/App';
 
-let Demo = React.createClass({
-  render() {
-    return <div>
-      <h1>react-trend Demo</h1>
-      <Component/>
-    </div>
-  }
-})
-
-render(<Demo/>, document.querySelector('#demo'))
+render(<App />, document.querySelector('#demo'));

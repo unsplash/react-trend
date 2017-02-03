@@ -1,0 +1,23 @@
+.app {
+  position: relative;
+  margin: 3rem auto;
+  max-width: 650px;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body, input, button {
+  font-family: Courier, "Courier New", monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 400;
+  font-color: #111;
+}
