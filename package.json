@@ -35,11 +35,22 @@
     "react-addons-test-utils": "15.4.2",
     "react-dom": "15.4.2"
   },
-  "author": "",
-  "homepage": "",
+  "contributors": [
+    {
+      "name": "Joshua Comeau",
+      "email": "josh@unsplash.com"
+    }
+  ],
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/you/repo.git"
+  },
   "keywords": [
-    "react-component"
+    "react-component",
+    "react",
+    "svg",
+    "graph",
+    "data-visualization"
   ]
 }
