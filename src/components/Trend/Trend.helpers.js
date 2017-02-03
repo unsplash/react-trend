@@ -3,22 +3,6 @@ import {
   checkForCollinearPoints,
 } from '../../helpers/math.helpers';
 
-export const getBoundaries = data => (
-  data.reduce((result, point) => {
-    if (point < result.min) {
-      // eslint-disable-next-line no-param-reassign
-      result.min = point;
-    }
-
-    if (point > result.max) {
-      // eslint-disable-next-line no-param-reassign
-      result.max = point;
-    }
-
-    return result;
-  }, { min: Infinity, max: -Infinity })
-);
-
 export const normalize = ({ point, min, max, scaleMin = 0, scaleMax = 1 }) => (
   scaleMin + (point - min) * (scaleMax - scaleMin) / (max - min)
 );
@@ -30,7 +14,7 @@ export const normalizeDataset = (data, { minX, maxX, minY, maxY }) => {
   // X axis is easy: just evenly-space each item in the array.
   // For the Y axis, we first need to find the min and max of our array,
   // and then normalize those values between 0 and 1.
-  const boundariesY = getBoundaries(data);
+  const boundariesY = { min: Math.min(...data), max: Math.max(...data) };
   const boundariesX = { min: 0, max: data.length - 1 };
 
   return data.map((point, index) => ({
