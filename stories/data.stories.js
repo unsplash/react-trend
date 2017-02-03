@@ -73,6 +73,7 @@ storiesOf('Trend data', module)
 
     return (
       <Trend
+        strokeWidth={0.5}
         data={data}
         style={{ display: 'block' }}
       />
@@ -83,6 +84,7 @@ storiesOf('Trend data', module)
 
     return (
       <Trend
+        strokeWidth={0.25}
         data={data}
         style={{ display: 'block' }}
       />

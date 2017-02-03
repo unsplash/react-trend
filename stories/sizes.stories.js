@@ -29,3 +29,17 @@ storiesOf('Trend sizes', module)
       style={{ display: 'block', border: '1px solid #777' }}
     />
   ))
+  .add('fixed width', () => (
+    <Trend
+      width={400}
+      data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
+      style={{ display: 'block', border: '1px solid #777' }}
+    />
+  ))
+  .add('fixed height', () => (
+    <Trend
+      height={150}
+      data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
+      style={{ display: 'block', border: '1px solid #777' }}
+    />
+  ))

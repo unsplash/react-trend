@@ -1,11 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 
 import { normalize, normalizeDataset, buildPath } from './Trend.helpers';
+import { injectStyleTag } from '../../helpers/DOM.helpers';
+import { generateId } from '../../helpers/misc.helpers';
 
 const propTypes = {
   data: PropTypes.arrayOf(PropTypes.number),
   rounded: PropTypes.bool,
   autoDraw: PropTypes.bool,
+  autoDrawDuration: PropTypes.number,
+  autoDrawEasing: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
   radius: PropTypes.number,
@@ -27,12 +31,50 @@ const defaultProps = {
   radius: 10,
   color: 'black',
   strokeWidth: 1,
+  autoDraw: false,
+  autoDrawDuration: 2000,
+  autoDrawEasing: 'ease',
 };
 
 const VIEWBOX_PADDING = 8;
 const GRADIENT_ID = 'react-trend-vertical-gradient';
 
 class Trend extends Component {
+  constructor(props) {
+    super(props);
+
+    // Generate a random ID. This is important for distinguishing between
+    // Trend components on a page, so that they can have different keyframe
+    // animations.
+    this.trendId = generateId();
+  }
+
+  componentDidMount() {
+    const { autoDraw, autoDrawDuration, autoDrawEasing } = this.props;
+
+    if (this.props.autoDraw) {
+      const lineLength = this.path.getTotalLength();
+
+      const css = `
+        @keyframes react-trend-autodraw-${this.trendId} {
+          from {
+            stroke-dashoffset: ${lineLength}
+          }
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        #react-trend-${this.trendId} {
+          stroke-dasharray: ${lineLength};
+          animation: react-trend-autodraw-${this.trendId} ${autoDrawDuration}ms ${autoDrawEasing}
+        }
+      `;
+
+      injectStyleTag(css);
+    }
+  }
+
   renderGradientDefinition() {
     const { color } = this.props;
 
@@ -73,7 +115,7 @@ class Trend extends Component {
       strokeLinejoin,
       strokeDasharray,
       strokeDashoffset,
-      ...delegated,
+      ...delegated
     } = this.props;
 
     // Our viewbox needs to be in absolute units, so we'll default to 300x75
@@ -111,14 +153,16 @@ class Trend extends Component {
         {this.renderGradientDefinition()}
 
         <path
+          ref={(elem) => { this.path = elem; }}
+          id={`react-trend-${this.trendId}`}
           d={path}
           fill="none"
           stroke={useGradient ? `url(#${GRADIENT_ID})` : color}
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
           strokeLinejoin={strokeLinejoin}
-          strokeDasharray={strokeDasharray}
-          strokeDashoffset={strokeDashoffset}
+          strokeDasharray={autoDraw === false ? strokeDasharray : undefined}
+          strokeDashoffset={autoDraw === false ? strokeDashoffset : undefined}
         />
       </svg>
     );
