@@ -18,7 +18,7 @@ storiesOf('Trend draw animations', module)
     <Trend
       autoDraw
       autoDrawDuration={1000}
-      color={['red', 'yellow']}
+      gradient={['red', 'yellow']}
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
@@ -28,7 +28,7 @@ storiesOf('Trend draw animations', module)
       autoDraw
       autoDrawDuration={5000}
       strokeWidth={4}
-      color={['red', 'orange']}
+      gradient={['red', 'orange']}
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
@@ -39,7 +39,7 @@ storiesOf('Trend draw animations', module)
       autoDrawEasing="ease"
       strokeLinecap="round"
       strokeWidth={4}
-      color={['violet', 'orange']}
+      gradient={['violet', 'orange']}
       data={[0, 10, 2, 8, 0, 10, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
@@ -50,7 +50,7 @@ storiesOf('Trend draw animations', module)
       autoDrawEasing="linear"
       strokeLinecap="round"
       strokeWidth={4}
-      color={['violet', 'orange']}
+      gradient={['violet', 'orange']}
       data={[0, 10, 2, 8, 0, 10, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
@@ -61,7 +61,7 @@ storiesOf('Trend draw animations', module)
       autoDrawEasing="ease-out"
       strokeLinecap="round"
       strokeWidth={4}
-      color={['violet', 'orange']}
+      gradient={['violet', 'orange']}
       data={[0, 10, 2, 8, 0, 10, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
@@ -72,7 +72,7 @@ storiesOf('Trend draw animations', module)
       autoDrawEasing="ease-in"
       strokeLinecap="round"
       strokeWidth={4}
-      color={['violet', 'orange']}
+      gradient={['violet', 'orange']}
       data={[0, 10, 2, 8, 0, 10, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />
@@ -83,7 +83,7 @@ storiesOf('Trend draw animations', module)
       autoDrawEasing="ease-in-out"
       strokeLinecap="round"
       strokeWidth={4}
-      color={['violet', 'orange']}
+      gradient={['violet', 'orange']}
       data={[0, 10, 2, 8, 0, 10, 9, 2, 4, 0]}
       style={{ display: 'block' }}
     />

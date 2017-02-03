@@ -38,7 +38,15 @@ storiesOf('Trend stroke styles', module)
   ))
   .add('stroke single colour', () => (
     <Trend
-      color="red"
+      stroke="red"
+      strokeWidth={2}
+      data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
+      style={{ display: 'block' }}
+    />
+  ))
+  .add('stroke 1-color gradient', () => (
+    <Trend
+      gradient={['red']}
       strokeWidth={2}
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
@@ -46,7 +54,7 @@ storiesOf('Trend stroke styles', module)
   ))
   .add('stroke 2-color gradient', () => (
     <Trend
-      color={['red', 'yellow']}
+      gradient={['red', 'yellow']}
       strokeWidth={2}
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}
@@ -54,7 +62,7 @@ storiesOf('Trend stroke styles', module)
   ))
   .add('stroke 3-color gradient', () => (
     <Trend
-      color={['red', 'yellow', 'green']}
+      gradient={['#0FF', '#F0F', '#FF0']}
       strokeWidth={2}
       data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
       style={{ display: 'block' }}

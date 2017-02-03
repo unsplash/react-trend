@@ -26,7 +26,7 @@ storiesOf('Multiple trends', module)
         autoDraw
         autoDrawDuration={2000}
         strokeWidth={3}
-        color={['purple', 'violet']}
+        gradient={['purple', 'violet']}
         data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
         style={{ display: 'block' }}
       />
@@ -36,7 +36,7 @@ storiesOf('Multiple trends', module)
         autoDraw
         autoDrawDuration={3500}
         strokeWidth={3}
-        color={['purple', 'violet']}
+        gradient={['purple', 'violet']}
         data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
         style={{ display: 'block' }}
       />
@@ -46,7 +46,7 @@ storiesOf('Multiple trends', module)
         autoDraw
         autoDrawDuration={4500}
         strokeWidth={3}
-        color={['purple', 'violet']}
+        gradient={['purple', 'violet']}
         data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
         style={{ display: 'block' }}
       />
@@ -56,7 +56,7 @@ storiesOf('Multiple trends', module)
         autoDraw
         autoDrawDuration={6500}
         strokeWidth={3}
-        color={['purple', 'violet']}
+        gradient={['purple', 'violet']}
         data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
         style={{ display: 'block' }}
       />

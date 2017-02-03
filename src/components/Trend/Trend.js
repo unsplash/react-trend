@@ -20,23 +20,12 @@ const propTypes = {
   height: PropTypes.number,
   padding: PropTypes.number,
   radius: PropTypes.number,
-  color: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
-  strokeWidth: PropTypes.number,
-  strokeLinecap: PropTypes.string,
-  strokeLinejoin: PropTypes.string,
-  strokeDashoffset: PropTypes.number,
-  strokeDasharray: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.arrayOf(PropTypes.number),
-  ]),
+  gradient: PropTypes.arrayOf(PropTypes.string),
 };
 
 const defaultProps = {
   radius: 10,
-  color: 'black',
+  stroke: 'black',
   padding: 8,
   strokeWidth: 1,
   autoDraw: false,
@@ -87,22 +76,18 @@ class Trend extends Component {
   }
 
   renderGradientDefinition() {
-    const { color } = this.props;
-
-    if (typeof color === 'string') {
-      return null;
-    }
+    const { gradient } = this.props;
 
     return (
       <defs>
         <linearGradient id={GRADIENT_ID} x1="0%" y1="0%" x2="0%" y2="100%">
-          {color.slice().reverse().map((c, index) => (
+          {gradient.slice().reverse().map((c, index) => (
             <stop
               key={index}
               offset={normalize({
                 value: index,
                 min: 0,
-                max: color.length - 1,
+                max: gradient.length - 1,
               })}
               stopColor={c}
             />
@@ -120,12 +105,7 @@ class Trend extends Component {
       height,
       padding,
       radius,
-      color,
-      strokeWidth,
-      strokeLinecap,
-      strokeLinejoin,
-      strokeDasharray,
-      strokeDashoffset,
+      gradient,
     } = this.props;
 
     // We need at least 2 points to draw a graph.
@@ -151,13 +131,9 @@ class Trend extends Component {
       maxY: padding,
     });
 
-    // Use a 'smooth curve' instruction if we want it smooth.
-    // Otherwise, use 'line';
     const path = smooth ?
       buildSmoothPath(normalizedData, { radius }) :
       buildLinearPath(normalizedData);
-
-    const useGradient = typeof color !== 'string';
 
     return (
       <svg
@@ -166,19 +142,14 @@ class Trend extends Component {
         viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
         {...this.getDelegatedProps()}
       >
-        {this.renderGradientDefinition()}
+        {gradient && this.renderGradientDefinition()}
 
         <path
           ref={(elem) => { this.path = elem; }}
           id={`react-trend-${this.trendId}`}
           d={path}
           fill="none"
-          stroke={useGradient ? `url(#${GRADIENT_ID})` : color}
-          strokeWidth={strokeWidth}
-          strokeLinecap={strokeLinecap}
-          strokeLinejoin={strokeLinejoin}
-          strokeDasharray={strokeDasharray}
-          strokeDashoffset={strokeDashoffset}
+          stroke={gradient ? `url(#${GRADIENT_ID})` : undefined}
         />
       </svg>
     );

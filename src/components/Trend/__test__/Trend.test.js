@@ -24,17 +24,23 @@ describe('Trend', () => {
     expect(viewBox).toEqual('0 0 300 75');
   });
 
+  it('delegates props to the parent SVG', () => {
+    const wrapper = shallow(<Trend strokeWidth={3} data={[1, 5, 1]} />);
+    const { strokeWidth } = wrapper.props();
+
+    // The exact ID is randomly generated, so we can't check the exact value
+    expect(strokeWidth).toEqual(3);
+  });
+
   it('renders a path matching the provided data', () => {
     const wrapper = shallow(<Trend data={[1, 5, 1]} />);
     const path = wrapper.childAt(0);
-    const { id, d, fill, stroke, strokeWidth } = path.props();
+    const { id, d, fill } = path.props();
 
     // The exact ID is randomly generated, so we can't check the exact value
     expect(id).toMatch(/^react-trend-[\d]+$/);
     expect(d).toEqual('M 8,67\nL 150,8\nL 292,67\n');
     expect(fill).toEqual('none');
-    expect(stroke).toEqual('black');
-    expect(strokeWidth).toEqual(1);
   });
 
   it('renders a smooth path when requested', () => {
@@ -59,7 +65,7 @@ describe('Trend', () => {
   it('renders a gradient when multiple colours are provided', () => {
     // I don't really know the best way to test this, beyond checking that
     // it doesn't blow up.
-    const wrapper = shallow(<Trend color={['red', 'blue']} data={[1, 5, 1]} />);
+    const wrapper = shallow(<Trend gradient={['red', 'blue']} data={[1, 5, 1]} />);
 
     const stops = wrapper.find('stop');
 
