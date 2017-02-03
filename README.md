@@ -6,10 +6,10 @@ Graphing tools are often complex, abstract, and heavy. They require domain-speci
 While building rich data visualizations for an analytics app, this is a necessary cost. But what if you just need a simple line that shows a trend?
 
 For example, here's how GitHub shows activity on a repo:
-![GitHub Trending](misc/documentation-assets/github-trend.png)
+![GitHub Trending](misc/documentation-assets/gh-trend.png)
 
 Here's how Twitter displays your recent analytics:
-![Twitter Trending](misc/documentation-assets/twitter-trend.png)
+![Twitter Trending](misc/documentation-assets/tw-trend.png)
 
 These are very simple and elegant visualizations, and they do not require a bloated graphing library to produce.
 
