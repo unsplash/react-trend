@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import { normalizeDataset } from './Trend.helpers';
+import { normalizeDataset } from '../Trend.helpers';
 
 describe('Trend Helpers', () => {
   describe('normalizeDataset', () => {
