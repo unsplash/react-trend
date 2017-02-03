@@ -17,7 +17,7 @@ Here's how Twitter displays your recent analytics:
 
 These are very simple and elegant visualizations, and they do not require a bloated graphing library to produce.
 
-Redux Trend is a concrete component that does 1 thing, and does it well: generate these trending graphs.
+React Trend is a concrete component that does 1 thing, and does it well: generate these trending graphs.
 
 
 ## Features
