@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
-import { normalize, normalizeDataset, buildPath } from './Trend.helpers';
-import { injectStyleTag } from '../../helpers/DOM.helpers';
+import { normalize } from '../../helpers/math.helpers';
+import { injectStyleTag, buildPath } from '../../helpers/DOM.helpers';
 import { generateId } from '../../helpers/misc.helpers';
+import { normalizeDataset } from './Trend.helpers';
 
 const propTypes = {
   data: PropTypes.arrayOf(PropTypes.number),

@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import { getDistanceBetween } from './math.helpers';
+import { getDistanceBetween } from '../math.helpers';
 
 describe('Math Helpers', () => {
   describe('getDistanceBetween', () => {
