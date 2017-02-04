@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Trend from '../../../../src/components/Trend';
 import Header from '../Header';
+import Tab from '../Tab';
+import TabGroup from '../TabGroup';
 
 import './App.css';
 
@@ -20,12 +22,20 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.changeToConfigView = this.changeView.bind(this, 'config');
+    this.changeToCodeView = this.changeView.bind(this, 'code');
+
     this.state = {
+      view: 'config',
       gradient: defaultGradient,
       radius: 3,
       strokeWidth: 2,
       strokeLinecap: 'round',
     };
+  }
+
+  changeView(view) {
+    this.setState({ view });
   }
 
   render() {
@@ -46,6 +56,22 @@ class App extends Component {
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
         />
+
+        <TabGroup>
+          <Tab
+            handleClick={this.changeToConfigView}
+            isActive={this.state.view === 'config'}
+          >
+            Configure
+          </Tab>
+
+          <Tab
+            handleClick={this.changeToCodeView}
+            isActive={this.state.view === 'code'}
+          >
+            Code
+          </Tab>
+        </TabGroup>
       </div>
     );
   }
