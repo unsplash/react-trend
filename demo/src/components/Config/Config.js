@@ -5,6 +5,7 @@ import Column from '../Column';
 import ConfigField from '../ConfigField';
 import GradientPreview from '../GradientPreview';
 import Slider from '../Slider';
+import Toggle from '../Toggle';
 
 import './Config.css';
 
@@ -17,9 +18,10 @@ const propTypes = {
     strokeLinecap: PropTypes.string.isRequired,
   }).isRequired,
   gradients: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  linecaps: PropTypes.arrayOf(PropTypes.string),
 };
 
-const Config = ({ handleUpdate, params, gradients }) => (
+const Config = ({ handleUpdate, params, gradients, linecaps }) => (
   <Row className="config">
     <Column>
       <ConfigField label="Colour">
@@ -30,6 +32,17 @@ const Config = ({ handleUpdate, params, gradients }) => (
             handleClick={() => handleUpdate({ gradient })}
             isActive={params.gradient === gradient}
           />
+        ))}
+      </ConfigField>
+      <ConfigField label="Linecap">
+        {linecaps.map(linecap => (
+          <Toggle
+            key={linecap}
+            isActive={params.strokeLinecap === linecap}
+            handleClick={() => handleUpdate({ strokeLinecap: linecap })}
+          >
+            {linecap}
+          </Toggle>
         ))}
       </ConfigField>
     </Column>
@@ -49,7 +62,7 @@ const Config = ({ handleUpdate, params, gradients }) => (
           withBars
           value={params.radius}
           min={0}
-          max={20}
+          max={13}
           step={0.1}
           onChange={val => handleUpdate({ radius: val })}
         />

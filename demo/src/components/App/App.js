@@ -18,7 +18,10 @@ const gradients = [
   ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
 ];
 
+const linecaps = ['butt', 'round', 'square'];
+
 const defaultGradient = gradients[3];
+const defaultLinecap = linecaps[0];
 
 class App extends Component {
   constructor(props) {
@@ -86,6 +89,7 @@ class App extends Component {
             <Config
               params={this.state}
               gradients={gradients}
+              linecaps={linecaps}
               handleUpdate={this.updateTrendParam}
             />
           ) : (

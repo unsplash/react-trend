@@ -20,7 +20,7 @@
 
 .slider:after {
   right: 0;
-  background: #CCC;
+  background: #ddd;
 }
 
 .slider .bar {
@@ -33,7 +33,7 @@
 }
 
 .slider .bar-1 {
-  background: #CCC;
+  background: #ddd;
 }
 .slider .handle {
   position: absolute;
@@ -44,8 +44,10 @@
   border-radius: 25px;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
   transition: transform 400ms;
+  cursor: grab;
 }
 .slider .handle:active {
   transition: transform 75ms;
   transform: scale(1.2, 1.2);
+  cursor: grabbing;
 }
