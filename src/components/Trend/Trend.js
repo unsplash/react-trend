@@ -87,7 +87,10 @@ class Trend extends Component {
               offset={normalize({
                 value: index,
                 min: 0,
-                max: gradient.length - 1,
+                // If we only supply a single colour, it will try to normalize
+                // between 0 and 0, which will create NaN. By making the `max`
+                // at least 1, we ensure single-color "gradients" work.
+                max: gradient.length - 1 || 1,
               })}
               stopColor={c}
             />

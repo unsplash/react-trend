@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   updateTrendParam(newState) {
-    console.log('Calling setstate', this);
     this.setState(newState);
   }
 
