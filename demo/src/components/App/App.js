@@ -4,6 +4,8 @@ import Trend from '../../../../src/components/Trend';
 import Header from '../Header';
 import Tab from '../Tab';
 import TabGroup from '../TabGroup';
+import Config from '../Config';
+import TrendCode from '../TrendCode';
 
 import './App.css';
 
@@ -36,6 +38,10 @@ class App extends Component {
 
   changeView(view) {
     this.setState({ view });
+  }
+
+  updateTrendParam(newState) {
+    this.setState(newState);
   }
 
   render() {
@@ -72,6 +78,11 @@ class App extends Component {
             Code
           </Tab>
         </TabGroup>
+
+        { this.state.view === 'config'
+            ? <Config handleUpdate={this.updateTrendParam} />
+            : <TrendCode params={this.state} />
+        }
       </div>
     );
   }
