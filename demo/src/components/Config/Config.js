@@ -4,6 +4,8 @@ import Row from '../Row';
 import Column from '../Column';
 import ConfigField from '../ConfigField';
 import GradientPreview from '../GradientPreview';
+import Slider from '../Slider';
+
 import './Config.css';
 
 const propTypes = {
@@ -33,8 +35,26 @@ const Config = ({ handleUpdate, params, gradients }) => (
     </Column>
     <Column>
       <ConfigField label="Width">
-        Width here
+        <Slider
+          withBars
+          value={params.strokeWidth}
+          min={0.1}
+          max={5}
+          step={0.1}
+          onChange={val => handleUpdate({ strokeWidth: val })}
+        />
       </ConfigField>
+      <ConfigField label="Radius">
+        <Slider
+          withBars
+          value={params.radius}
+          min={0}
+          max={20}
+          step={0.1}
+          onChange={val => handleUpdate({ radius: val })}
+        />
+      </ConfigField>
+
     </Column>
   </Row>
 );
