@@ -1,0 +1,15 @@
+.gradientPreview {
+  position: relative;
+  display: inline-block;
+  margin: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  border: 2px solid #FFF;
+}
+
+.gradientPreview.isActive {
+  border: 2px solid #111;
+  box-shadow: none;
+}

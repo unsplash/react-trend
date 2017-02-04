@@ -27,6 +27,8 @@ class App extends Component {
     this.changeToConfigView = this.changeView.bind(this, 'config');
     this.changeToCodeView = this.changeView.bind(this, 'code');
 
+    this.updateTrendParam = this.updateTrendParam.bind(this);
+
     this.state = {
       view: 'config',
       gradient: defaultGradient,
@@ -41,6 +43,7 @@ class App extends Component {
   }
 
   updateTrendParam(newState) {
+    console.log('Calling setstate', this);
     this.setState(newState);
   }
 
@@ -79,10 +82,18 @@ class App extends Component {
           </Tab>
         </TabGroup>
 
-        { this.state.view === 'config'
-            ? <Config handleUpdate={this.updateTrendParam} />
-            : <TrendCode params={this.state} />
+        {/* eslint-disable react/jsx-indent */}
+        { this.state.view === 'config' ? (
+            <Config
+              params={this.state}
+              gradients={gradients}
+              handleUpdate={this.updateTrendParam}
+            />
+          ) : (
+            <TrendCode params={this.state} />
+          )
         }
+        {/* eslint-enable */}
       </div>
     );
   }
