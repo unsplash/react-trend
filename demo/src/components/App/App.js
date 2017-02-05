@@ -7,6 +7,7 @@ import TabGroup from '../TabGroup';
 import Config from '../Config';
 import TrendCode from '../TrendCode';
 import GithubLink from '../GithubLink';
+import Footer from '../Footer';
 
 import './App.css';
 
@@ -100,6 +101,8 @@ class App extends Component {
           )
         }
         {/* eslint-enable */}
+
+        <Footer />
       </div>
     );
   }
