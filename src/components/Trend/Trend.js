@@ -51,35 +51,53 @@ class Trend extends Component {
     if (autoDraw) {
       this.lineLength = this.path.getTotalLength();
 
-      const css = `
+      // We do the animation using the dash array/offset trick
+      // https://css-tricks.com/svg-line-animation-works/
+      const autodrawKeyframeAnimation = `
         @keyframes react-trend-autodraw-${this.trendId} {
-          from {
+          0% {
+            stroke-dasharray: ${this.lineLength};
             stroke-dashoffset: ${this.lineLength}
           }
-          to {
+          100% {
+            stroke-dasharray: ${this.lineLength};
             stroke-dashoffset: 0;
           }
+          100% {
+            stroke-dashoffset: '';
+            stroke-dasharray: '';
+          }
         }
+      `;
+
+      // One unfortunate side-effect of the auto-draw is that the line is
+      // actually 1 big dash, the same length as the line itself. If the
+      // line length changes (eg. radius change, new data), that dash won't
+      // be the same length anymore. We can fix that by removing those
+      // properties once the auto-draw is completed.
+      const cleanupKeyframeAnimation = `
+        @keyframes react-trend-autodraw-cleanup-${this.trendId} {
+          to {
+            stroke-dasharray: '';
+            stroke-dashoffset: '';
+          }
+        }
+      `;
+
+      const css = `
+        ${autodrawKeyframeAnimation}
+
+        ${cleanupKeyframeAnimation}
 
         #react-trend-${this.trendId} {
-          stroke-dasharray: ${this.lineLength};
-          animation: react-trend-autodraw-${this.trendId} ${autoDrawDuration}ms ${autoDrawEasing}
+          animation:
+            react-trend-autodraw-${this.trendId} ${autoDrawDuration}ms ${autoDrawEasing},
+            react-trend-autodraw-cleanup-${this.trendId} 1ms ${autoDrawDuration}ms
+          ;
         }
       `;
 
       injectStyleTag(css);
-    }
-  }
-
-  componentDidUpdate() {
-    // It's possible that the length of our line has changed.
-    // If so, we need to update the strokeDasharray.
-    // This is
-    const newLineLength = this.path.getTotalLength();
-
-    if (newLineLength !== this.lineLength) {
-      this.lineLength = newLineLength;
-      this.path.style.strokeDasharray = this.lineLength;
     }
   }
 
