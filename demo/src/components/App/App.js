@@ -13,14 +13,14 @@ const gradients = [
   ['#222'],
   ['#42b3f4'],
   ['red', 'orange', 'yellow'],
-  ['#0FF', '#F0F', '#FF0'],
   ['purple', 'violet'],
-  ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+  ['#00c6ff', '#F0F', '#FF0'],
+  ['#f72047', '#ffd200', '#1feaea'],
 ];
 
 const linecaps = ['butt', 'round', 'square'];
 
-const defaultGradient = gradients[3];
+const defaultGradient = gradients[4];
 const defaultLinecap = linecaps[0];
 
 class App extends Component {
@@ -34,10 +34,10 @@ class App extends Component {
 
     this.state = {
       view: 'config',
-      gradient: defaultGradient,
-      radius: 3,
+      radius: 10,
       strokeWidth: 2,
-      strokeLinecap: 'round',
+      gradient: defaultGradient,
+      strokeLinecap: defaultLinecap,
     };
   }
 

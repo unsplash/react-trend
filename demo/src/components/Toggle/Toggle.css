@@ -3,7 +3,7 @@
   display: inline-block;
   border: 0;
   border-bottom: 3px solid rgba(0, 0, 0, 0.3);
-  background: #ddd;
+  background: #fff;
   color: #111;
   margin: 0;
   padding: 8px 20px;
@@ -27,5 +27,5 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 .toggle.isActive {
-  background: #bbb;
+  background: #ddd;
 }

@@ -1,7 +1,7 @@
 .gradientPreview {
   position: relative;
   display: inline-block;
-  margin: 3px;
+  margin: 3px 6px 3px 0;
   width: 30px;
   height: 30px;
   border-radius: 2px;
