@@ -6,6 +6,7 @@ import Tab from '../Tab';
 import TabGroup from '../TabGroup';
 import Config from '../Config';
 import TrendCode from '../TrendCode';
+import GithubLink from '../GithubLink';
 
 import './App.css';
 
@@ -56,6 +57,7 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
+        <GithubLink className="cornerGithubLink" />
 
         <Trend
           autoDraw

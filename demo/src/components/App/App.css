@@ -26,3 +26,9 @@ p {
   font-weight: 400;
   font-color: #111;
 }
+
+.cornerGithubLink {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
