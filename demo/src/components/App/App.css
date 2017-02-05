@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+a {
+  color: #999;
+  font-weight: 500;
+}
+
 body, input, button {
   font-family: Courier, "Courier New", monospace;
 }

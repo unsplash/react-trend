@@ -22,6 +22,7 @@ const linecaps = ['butt', 'round', 'square'];
 
 const defaultGradient = gradients[4];
 const defaultLinecap = linecaps[0];
+const placeholderData = [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0];
 
 class App extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class App extends Component {
           autoDrawDuration={3000}
           autoDrawEasing="ease-out"
           smooth
-          data={[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]}
+          data={placeholderData}
           gradient={gradient}
           radius={radius}
           strokeWidth={strokeWidth}
@@ -93,7 +94,7 @@ class App extends Component {
               handleUpdate={this.updateTrendParam}
             />
           ) : (
-            <TrendCode params={this.state} />
+            <TrendCode data={placeholderData} params={this.state} />
           )
         }
         {/* eslint-enable */}
