@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react';
 
 import { omit } from '../../utils';
 import {
-  injectStyleTag,
   buildSmoothPath,
   buildLinearPath,
+  injectStyleTag,
 } from '../../helpers/DOM.helpers';
 import { normalize } from '../../helpers/math.helpers';
 import { generateId } from '../../helpers/misc.helpers';
@@ -49,12 +49,12 @@ class Trend extends Component {
     const { autoDraw, autoDrawDuration, autoDrawEasing } = this.props;
 
     if (autoDraw) {
-      const lineLength = this.path.getTotalLength();
+      this.lineLength = this.path.getTotalLength();
 
       const css = `
         @keyframes react-trend-autodraw-${this.trendId} {
           from {
-            stroke-dashoffset: ${lineLength}
+            stroke-dashoffset: ${this.lineLength}
           }
           to {
             stroke-dashoffset: 0;
@@ -62,12 +62,24 @@ class Trend extends Component {
         }
 
         #react-trend-${this.trendId} {
-          stroke-dasharray: ${lineLength};
+          stroke-dasharray: ${this.lineLength};
           animation: react-trend-autodraw-${this.trendId} ${autoDrawDuration}ms ${autoDrawEasing}
         }
       `;
 
       injectStyleTag(css);
+    }
+  }
+
+  componentDidUpdate() {
+    // It's possible that the length of our line has changed.
+    // If so, we need to update the strokeDasharray.
+    // This is
+    const newLineLength = this.path.getTotalLength();
+
+    if (newLineLength !== this.lineLength) {
+      this.lineLength = newLineLength;
+      this.path.style.strokeDasharray = this.lineLength;
     }
   }
 
