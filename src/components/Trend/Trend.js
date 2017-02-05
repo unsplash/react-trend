@@ -8,7 +8,7 @@ import {
 } from '../../helpers/DOM.helpers';
 import { normalize } from '../../helpers/math.helpers';
 import { generateId } from '../../helpers/misc.helpers';
-import { normalizeDataset } from './Trend.helpers';
+import { normalizeDataset, generateAutoDrawCss } from './Trend.helpers';
 
 const propTypes = {
   data: PropTypes.arrayOf(PropTypes.number),
@@ -51,51 +51,12 @@ class Trend extends Component {
     if (autoDraw) {
       this.lineLength = this.path.getTotalLength();
 
-      // We do the animation using the dash array/offset trick
-      // https://css-tricks.com/svg-line-animation-works/
-      const autodrawKeyframeAnimation = `
-        @keyframes react-trend-autodraw-${this.trendId} {
-          0% {
-            stroke-dasharray: ${this.lineLength};
-            stroke-dashoffset: ${this.lineLength}
-          }
-          100% {
-            stroke-dasharray: ${this.lineLength};
-            stroke-dashoffset: 0;
-          }
-          100% {
-            stroke-dashoffset: '';
-            stroke-dasharray: '';
-          }
-        }
-      `;
-
-      // One unfortunate side-effect of the auto-draw is that the line is
-      // actually 1 big dash, the same length as the line itself. If the
-      // line length changes (eg. radius change, new data), that dash won't
-      // be the same length anymore. We can fix that by removing those
-      // properties once the auto-draw is completed.
-      const cleanupKeyframeAnimation = `
-        @keyframes react-trend-autodraw-cleanup-${this.trendId} {
-          to {
-            stroke-dasharray: '';
-            stroke-dashoffset: '';
-          }
-        }
-      `;
-
-      const css = `
-        ${autodrawKeyframeAnimation}
-
-        ${cleanupKeyframeAnimation}
-
-        #react-trend-${this.trendId} {
-          animation:
-            react-trend-autodraw-${this.trendId} ${autoDrawDuration}ms ${autoDrawEasing},
-            react-trend-autodraw-cleanup-${this.trendId} 1ms ${autoDrawDuration}ms
-          ;
-        }
-      `;
+      const css = generateAutoDrawCss({
+        id: this.trendId,
+        lineLength: this.lineLength,
+        duration: autoDrawDuration,
+        easing: autoDrawEasing,
+      });
 
       injectStyleTag(css);
     }
