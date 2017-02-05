@@ -33,15 +33,12 @@ export const buildSmoothPath = (data, { radius }) => {
     const distanceFromNext = getDistanceBetween(next, point);
     const threshold = Math.min(distanceFromPrev, distanceFromNext);
 
-    const isTooCloseForRadius = (threshold / 2 < radius);
+    const isTooCloseForRadius = (threshold / 2) < radius;
 
-    if (isTooCloseForRadius) {
-      // eslint-disable-next-line no-param-reassign
-      radius = threshold / 2;
-    }
+    const radiusForPoint = isTooCloseForRadius ? threshold / 2 : radius;
 
-    const before = moveTo(prev, point, radius);
-    const after = moveTo(next, point, radius);
+    const before = moveTo(prev, point, radiusForPoint);
+    const after = moveTo(next, point, radiusForPoint);
 
     return [
       path,

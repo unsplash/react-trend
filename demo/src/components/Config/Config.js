@@ -62,7 +62,7 @@ const Config = ({ handleUpdate, params, gradients, linecaps }) => (
           withBars
           value={params.radius}
           min={0}
-          max={13}
+          max={25}
           step={0.1}
           onChange={val => handleUpdate({ radius: val })}
         />
