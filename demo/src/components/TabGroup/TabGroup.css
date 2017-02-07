@@ -1,8 +1,0 @@
-.tabGroup {
-  display: flex;
-  margin-top: 3rem;
-}
-
-.tabGroup .tab {
-  flex: 1;
-}
