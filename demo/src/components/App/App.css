@@ -20,6 +20,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+h1 {
+  letter-spacing: -1px;
+}
+
 p {
   font-size: 15px;
   font-weight: 400;
