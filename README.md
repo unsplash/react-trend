@@ -5,6 +5,7 @@
 [![npm package][npm-badge]][npm]
 [![Codecov][codecov-badge]][codecov]
 
+Graphing tools are often complex, abstract, and heavy. They require domain-specific knowledge, and a significant time investment.
 
 While building rich data visualizations for an analytics app, this is a necessary cost. But what if you just need a simple line that shows a trend?
 
