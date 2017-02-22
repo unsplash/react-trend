@@ -1,6 +1,9 @@
 # 📈 React Trend
 ### Simple, elegant trend graphs
 
+![React Trend](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/react-trend-example.png)
+
+
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
 [![Codecov][codecov-badge]][codecov]
