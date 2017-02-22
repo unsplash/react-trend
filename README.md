@@ -1,21 +1,20 @@
 # 📈 React Trend
-### Elegant, simple _trend_ graphs
+### Simple, elegant trend graphs
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
 
 Graphing tools are often complex, abstract, and heavy. They require domain-specific knowledge, and a significant time investment.
 
 While building rich data visualizations for an analytics app, this is a necessary cost. But what if you just need a simple line that shows a trend?
 
 For example, here's how GitHub shows activity on a repo:
-![GitHub Trending](misc/documentation-assets/gh-trend.png)
+![GitHub Trending](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/gh-trend.png)
 
 Here's how Twitter displays your recent analytics:
-![Twitter Trending](misc/documentation-assets/tw-trend.png)
+![Twitter Trending](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/tw-trend.png)
 
-These are very simple and elegant visualizations, and they do not require a bloated graphing library to produce.
+These are very simple and elegant visualizations, and they should not require a bloated graphing library to produce.
 
 React Trend is a concrete component that does 1 thing, and does it well: generate these trending graphs.
 
@@ -25,14 +24,17 @@ React Trend is a concrete component that does 1 thing, and does it well: generat
 - **Simple**. Integrate in seconds.
 - **Scalable**. Uses SVG for sharp, scalable graphs. Will fill the parent container, or you can provide a fixed size.
 - **Beautiful**. Built-in gradient support, and customizable smoothing.
-- **Animatable**. Set `autoDraw` to have the line 'draw itself'.
-- **Tiny**. Zero-dependency, and gzips to just _2.62kb!_
+- **Animatable**. Support for on-mount animations where the trend graph draws from left to right.
+- **Tiny**. Zero-dependency, gzips to <3kb.
 
 
 ### Installation
 
-```
-npm i -S react-trend
+```bash
+$ yarn add react-trend
+
+# Alternatively:
+$ npm i -S react-trend
 ```
 
 UMD builds are also available via CDN:
@@ -265,11 +267,8 @@ Note that in _most_ cases it is sufficient to leave this blank, and just control
 References for badges
 
 -->
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+[build-badge]: https://img.shields.io/travis/unsplash/react-trend/master.png?style=flat-square
+[build]: https://travis-ci.org/unsplash/react-trend
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+[npm-badge]: https://img.shields.io/npm/v/react-trend.png?style=flat-square
+[npm]: https://www.npmjs.org/package/react-trend
