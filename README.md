@@ -20,6 +20,10 @@ These are very simple and elegant visualizations, and they should not require a 
 React Trend is a concrete component that does 1 thing, and does it well: generate these trending graphs.
 
 
+## Demo
+
+Check out the [React Trend playground](https://unsplash.github.io/react-trend/).
+
 ## Features
 
 - **Simple**. Integrate in seconds.
