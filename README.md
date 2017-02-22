@@ -268,8 +268,8 @@ Note that in _most_ cases it is sufficient to leave this blank, and just control
 References for badges
 
 -->
-[build-badge]: https://img.shields.io/travis/unsplash/react-trend/master.png?style=flat-square
-[build]: https://travis-ci.org/unsplash/react-trend
+[build-badge]: https://img.shields.io/travis/unsplash/react-trend?style=flat-square
+[build]: https://travis-ci.com/unsplash/react-trend
 
 [npm-badge]: https://img.shields.io/npm/v/react-trend.png?style=flat-square
 [npm]: https://www.npmjs.org/package/react-trend
