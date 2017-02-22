@@ -3,6 +3,7 @@
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
+[![Codecov][codecov-badge]][codecov]
 
 Graphing tools are often complex, abstract, and heavy. They require domain-specific knowledge, and a significant time investment.
 
@@ -272,3 +273,6 @@ References for badges
 
 [npm-badge]: https://img.shields.io/npm/v/react-trend.png?style=flat-square
 [npm]: https://www.npmjs.org/package/react-trend
+
+[codecov-badge]: https://img.shields.io/codecov/c/unsplash/react-trend.png?style=flat-square
+[codecov]: https://codecov.io/github/unsplash/react-trend
