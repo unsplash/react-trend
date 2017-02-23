@@ -1,5 +1,5 @@
 # 📈 React Trend
-### Simple, elegant trend graphs
+### Simple, elegant spark lines
 
 ![React Trend](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/react-trend-example.png)
 
@@ -10,7 +10,7 @@
 
 Graphing tools are often complex, abstract, and heavy. They require domain-specific knowledge, and a significant time investment.
 
-While building rich data visualizations for an analytics app, this is a necessary cost. But what if you just need a simple line that shows a trend?
+While building rich data visualizations for an analytics app, this is a necessary cost. But what if you just need a spark line that shows a trend?
 
 For example, here's how GitHub shows activity on a repo:
 ![GitHub Trending](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/gh-trend.png)
