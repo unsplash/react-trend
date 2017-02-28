@@ -1,22 +1,25 @@
-# 📈 React Trend
-### Simple, elegant spark lines
+<div align="center">
+  <img src="https://raw.githubusercontent.com/unsplash/react-trend/master/misc/documentation-assets/react-trend-example.png" width="500" alt="React Trend">
+  <br>
+  <h1>React Trend</h1>
+  <br>
+  <a href="https://www.npmjs.org/package/react-trend"><img src="https://img.shields.io/npm/v/react-trend.png?style=flat-square" alt="npm"></a> <a href="https://travis-ci.org/unsplash/react-trend"><img src="https://img.shields.io/travis/unsplash/react-trend/master.png?style=flat-square" alt="travis"></a> <a href="https://codecov.io/github/unsplash/react-trend"><img src="https://img.shields.io/codecov/c/github/unsplash/react-trend.svg" alt="travis"></a>
+</div>
 
-![React Trend](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/react-trend-example.png)
-
-
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Codecov][codecov-badge]][codecov]
-
+<br>
+<br>
+<br>
 Graphing tools are often complex, abstract, and heavy. They require domain-specific knowledge, and a significant time investment.
 
 While building rich data visualizations for an analytics app, this is a necessary cost. But what if you just need a spark line that shows a trend?
 
 For example, here's how GitHub shows activity on a repo:
-![GitHub Trending](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/gh-trend.png)
+
+<img src="https://raw.githubusercontent.com/unsplash/react-trend/master/misc/documentation-assets/gh-trend.png" width="300" />
 
 Here's how Twitter displays your recent analytics:
-![Twitter Trending](https://github.com/unsplash/react-trend/blob/master/misc/documentation-assets/tw-trend.png)
+
+<img src="https://raw.githubusercontent.com/unsplash/react-trend/master/misc/documentation-assets/tw-trend.png" width="300" />
 
 These are very simple and elegant visualizations, and they should not require a bloated graphing library to produce.
 
@@ -251,18 +254,3 @@ Note that in _most_ cases it is sufficient to leave this blank, and just control
 ```js
 <Trend width={200} height={200} />
 ```
-
-
-<!--
-
-References for badges
-
--->
-[build-badge]: https://img.shields.io/travis/unsplash/react-trend/master.png?style=flat-square
-[build]: https://travis-ci.org/unsplash/react-trend
-
-[npm-badge]: https://img.shields.io/npm/v/react-trend.png?style=flat-square
-[npm]: https://www.npmjs.org/package/react-trend
-
-[codecov-badge]: https://img.shields.io/codecov/c/github/unsplash/react-trend.svg
-[codecov]: https://codecov.io/github/unsplash/react-trend
