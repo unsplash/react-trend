@@ -208,23 +208,6 @@ In most cases you don't need to touch this value.
 ```
 
 
-#### `padding`
-| Type     | Required | Default     |
-|----------|----------|-------------|
-| Number   | ✕        | `8`         |
-
-If you set a very large `strokeWidth` on your line, you may notice that it gets "cropped" towards the edges. This is because SVGs don't support overflow.
-
-By increasing this number, you expand the space around the line, so that very thick lines aren't cropped.
-
-In most cases you don't need to touch this value.
-
-###### Example
-```js
-<Trend strokeWidth={20} padding={18} />
-```
-
-
 #### `radius`
 | Type     | Required | Default     |
 |----------|----------|-------------|
