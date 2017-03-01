@@ -11,7 +11,14 @@ import { generateId } from '../../helpers/misc.helpers';
 import { normalizeDataset, generateAutoDrawCss } from './Trend.helpers';
 
 const propTypes = {
-  data: PropTypes.arrayOf(PropTypes.number),
+  data: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.shape({
+        value: PropTypes.number,
+      }),
+    ]).isRequired
+  ).isRequired,
   smooth: PropTypes.bool,
   autoDraw: PropTypes.bool,
   autoDrawDuration: PropTypes.number,
@@ -107,6 +114,17 @@ class Trend extends Component {
       return null;
     }
 
+    // `data` can either be an array of numbers:
+    // [1, 2, 3]
+    // or, an array of objects containing a value:
+    // [ { value: 1 }, { value: 2 }, { value: 3 }]
+    //
+    // For now, we're just going to convert the second form to the first.
+    // Later on, if/when we support tooltips, we may adjust.
+    const plainValues = data.map(point => (
+      typeof point === 'number' ? point : point.value
+    ));
+
     // Our viewbox needs to be in absolute units, so we'll default to 300x75
     // Our SVG can be a %, though; this is what makes it scalable.
     // By defaulting to percentages, the SVG will grow to fill its parent
@@ -116,7 +134,7 @@ class Trend extends Component {
     const svgWidth = width || '100%';
     const svgHeight = height || '25%';
 
-    const normalizedData = normalizeDataset(data, {
+    const normalizedValues = normalizeDataset(plainValues, {
       minX: padding,
       maxX: viewBoxWidth - padding,
       // NOTE: Because SVGs are indexed from the top left, but most data is
@@ -125,9 +143,9 @@ class Trend extends Component {
       maxY: padding,
     });
 
-    const path = smooth ?
-      buildSmoothPath(normalizedData, { radius }) :
-      buildLinearPath(normalizedData);
+    const path = smooth
+      ? buildSmoothPath(normalizedValues, { radius })
+      : buildLinearPath(normalizedValues);
 
     return (
       <svg

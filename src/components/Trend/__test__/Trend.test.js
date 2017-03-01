@@ -79,4 +79,24 @@ describe('Trend', () => {
     expect(lastStopProps.offset).toEqual(1);
     expect(lastStopProps.stopColor).toEqual('red');
   });
+
+  it('handles an array of value objects', () => {
+    // We'll check that it renders identical output for both types.
+    const data = {
+      numbers: [1, 5, 1],
+      objects: [{ value: 1 }, { value: 5 }, { value: 1 }],
+    };
+
+    const numberWrapper = shallow(<Trend data={data.numbers} />);
+    const objectWrapper = shallow(<Trend data={data.objects} />);
+
+    // Compare the actual path rendered, not the entire HTML output.
+    // This is because trends are given randomly-generated IDs, and
+    // an ID prop is applied to the <path>, making equality checks fail.
+    expect(
+      numberWrapper.childAt(0).props().d
+    ).toEqual(
+      objectWrapper.childAt(0).props().d
+    );
+  });
 });
