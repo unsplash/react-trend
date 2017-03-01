@@ -117,3 +117,17 @@ storiesOf('Trend data', module)
       style={{ display: 'block' }}
     />
   ))
+  .add('as an array of objects', () => (
+    <Trend
+      data={[
+        { value: 1 },
+        { value: 5 },
+        { value: 2 },
+        { value: 3 },
+        { value: 1 },
+        { value: 5 },
+        { value: 1 },
+      ]}
+      style={{ display: 'block' }}
+    />
+  ))
