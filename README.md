@@ -147,19 +147,22 @@ This prop has no effect if `autoDraw` isn't set to `true`.
 
 
 #### `data`
-| Type     | Required | Default     |
-|----------|----------|-------------|
-| [Number] | ✓        | `undefined` |
+| Type            | Required | Default     |
+|-----------------|----------|-------------|
+| [Number|Object] | ✓        | `undefined` |
 
 The data accepted by React Trend is incredibly simple: An array of y-axis values to graph.
 
 React Trend takes care of normalization, so don't worry about ensuring the data is in a specific range.
 
-This does mean that all data points will be evenly-spaced. If you have irregularly-spaced data, it will not be properly represented. If this is the case, feel free to open an issue - happy to add support for this use-case if it exists.
+This does mean that all data points will be evenly-spaced. If you have irregularly-spaced data, it will not be properly represented.
+
+As of v1.2.0, you may supply an array of data objects with a `value` property.
 
 ###### Example
 ```js
 <Trend data={[120, 149, 193.4, 200, 92]} />
+<Trend data={[{ value: 4 }, { value: 6 }, { value: 8 }]} />
 ```
 
 
