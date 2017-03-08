@@ -40,8 +40,6 @@ const defaultProps = {
   autoDrawEasing: 'ease',
 };
 
-const GRADIENT_ID = 'react-trend-vertical-gradient';
-
 class Trend extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +48,7 @@ class Trend extends Component {
     // Trend components on a page, so that they can have different keyframe
     // animations.
     this.trendId = generateId();
+    this.gradientId = `react-trend-vertical-gradient-${this.trendId}`;
   }
 
   componentDidMount() {
@@ -78,7 +77,13 @@ class Trend extends Component {
 
     return (
       <defs>
-        <linearGradient id={GRADIENT_ID} x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient
+          id={this.gradientId}
+          x1="0%"
+          y1="0%"
+          x2="0%"
+          y2="100%"
+        >
           {gradient.slice().reverse().map((c, index) => (
             <stop
               key={index}
@@ -161,7 +166,7 @@ class Trend extends Component {
           id={`react-trend-${this.trendId}`}
           d={path}
           fill="none"
-          stroke={gradient ? `url(#${GRADIENT_ID})` : undefined}
+          stroke={gradient ? `url(#${this.gradientId})` : undefined}
         />
       </svg>
     );
