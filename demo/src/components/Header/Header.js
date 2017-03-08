@@ -6,7 +6,7 @@ const Header = () => (
   <header className="header">
     <h1>React Trend</h1>
     <p>Simple, elegant trend graphs for React.js.</p>
-    <p>A project by <a href="https://www.unsplash.com">Unsplash</a>.</p>
+    <p>A project by <a href="https://unsplash.com">Unsplash</a>.</p>
   </header>
 );
 
