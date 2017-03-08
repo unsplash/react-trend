@@ -62,3 +62,23 @@ storiesOf('Multiple trends', module)
       />
     </div>
   ))
+  .add('2 trends with different gradients', () => (
+    <div>
+      <Trend
+        autoDraw
+        autoDrawDuration={3000}
+        strokeWidth={3}
+        gradient={['purple', 'violet']}
+        data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
+        style={{ display: 'block' }}
+      />
+      <Trend
+        autoDraw
+        autoDrawDuration={3000}
+        strokeWidth={3}
+        gradient={['orange', 'red']}
+        data={[0, 10, 2, 8, 0, 5, 9, 2, 4, 0]}
+        style={{ display: 'block' }}
+      />
+    </div>
+  ))
