@@ -149,7 +149,7 @@ This prop has no effect if `autoDraw` isn't set to `true`.
 #### `data`
 | Type            | Required | Default     |
 |-----------------|----------|-------------|
-| [Number|Object] | ✓        | `undefined` |
+| [Number\|Object] | ✓        | `undefined` |
 
 The data accepted by React Trend is incredibly simple: An array of y-axis values to graph.
 
