@@ -117,6 +117,12 @@ storiesOf('Trend data', module)
       style={{ display: 'block' }}
     />
   ))
+  .add('same-value points', () => (
+    <Trend
+      data={[5, 5, 5, 5, 5, 5, 5, 5, 5, 5]}
+      style={{ display: 'block' }}
+    />
+  ))
   .add('as an array of objects', () => (
     <Trend
       data={[

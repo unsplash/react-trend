@@ -7,8 +7,8 @@ export const normalizeDataset = (data, { minX, maxX, minY, maxY }) => {
   // X axis is easy: just evenly-space each item in the array.
   // For the Y axis, we first need to find the min and max of our array,
   // and then normalize those values between 0 and 1.
-  const boundariesY = { min: Math.min(...data), max: Math.max(...data) };
   const boundariesX = { min: 0, max: data.length - 1 };
+  const boundariesY = { min: Math.min(...data), max: Math.max(...data) };
 
   return data.map((point, index) => ({
     x: normalize({
