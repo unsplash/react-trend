@@ -11,9 +11,15 @@
  *
  * @returns {Number} the value on its new scale
  */
-export const normalize = ({ value, min, max, scaleMin = 0, scaleMax = 1 }) => (
-  scaleMin + (value - min) * (scaleMax - scaleMin) / (max - min)
-);
+export const normalize = ({ value, min, max, scaleMin = 0, scaleMax = 1 }) => {
+  // If the `min` and `max` are the same value, it means our dataset is flat.
+  // For now, let's assume that flat data should be aligned to the bottom.
+  if (min === max) {
+    return scaleMin;
+  }
+
+  return scaleMin + (value - min) * (scaleMax - scaleMin) / (max - min);
+};
 
 /** moveTo
  * the coordinate that lies at a midpoint between 2 lines, based on the radius
