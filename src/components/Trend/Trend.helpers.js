@@ -10,7 +10,7 @@ export const normalizeDataset = (data, { minX, maxX, minY, maxY }) => {
   const boundariesX = { min: 0, max: data.length - 1 };
   const boundariesY = { min: Math.min(...data), max: Math.max(...data) };
 
-  return data.map((point, index) => ({
+  const normalizedData = data.map((point, index) => ({
     x: normalize({
       value: index,
       min: boundariesX.min,
@@ -26,6 +26,21 @@ export const normalizeDataset = (data, { minX, maxX, minY, maxY }) => {
       scaleMax: maxY,
     }),
   }));
+
+  // According to the SVG spec, paths with a height/width of `0` can't have
+  // linear gradients applied. This means that our lines are invisible when
+  // the dataset is flat (eg. [0, 0, 0, 0]).
+  //
+  // The hacky solution is to apply a very slight offset to the final point of
+  // the dataset. As ugly as it is, it's the best solution we can find (there
+  // are ways within the SVG spec of changing it, but not without causing
+  // breaking changes).
+  if (boundariesY.min === boundariesY.max) {
+    // eslint-disable-next-line no-param-reassign
+    normalizedData[normalizedData.length - 1].y += 0.0001;
+  }
+
+  return normalizedData;
 };
 
 export const generateAutoDrawCss = ({ id, lineLength, duration, easing }) => {
