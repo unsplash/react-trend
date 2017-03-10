@@ -31,13 +31,13 @@ export const normalizeDataset = (data, { minX, maxX, minY, maxY }) => {
   // linear gradients applied. This means that our lines are invisible when
   // the dataset is flat (eg. [0, 0, 0, 0]).
   //
-  // The hacky solution is to apply a very slight offset to the final point of
+  // The hacky solution is to apply a very slight offset to the first point of
   // the dataset. As ugly as it is, it's the best solution we can find (there
   // are ways within the SVG spec of changing it, but not without causing
   // breaking changes).
   if (boundariesY.min === boundariesY.max) {
     // eslint-disable-next-line no-param-reassign
-    normalizedData[normalizedData.length - 1].y += 0.0001;
+    normalizedData[0].y += 0.0001;
   }
 
   return normalizedData;

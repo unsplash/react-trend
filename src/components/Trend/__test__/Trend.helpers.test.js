@@ -66,11 +66,11 @@ describe('Trend Helpers', () => {
       const maxY = 10;
 
       const expectedResult = [
-        { x: 0, y: 0 },
+        { x: 0, y: 0.0001 },
         { x: 25, y: 0 },
         { x: 50, y: 0 },
         { x: 75, y: 0 },
-        { x: 100, y: 0.0001 },
+        { x: 100, y: 0 },
       ];
       const actualResult = normalizeDataset(data, { minX, maxX, minY, maxY });
 
