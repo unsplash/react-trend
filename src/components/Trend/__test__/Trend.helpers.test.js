@@ -57,5 +57,24 @@ describe('Trend Helpers', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+
+    it('handles same-value data', () => {
+      const data = [5, 5, 5, 5, 5];
+      const minX = 0;
+      const maxX = 100;
+      const minY = 0;
+      const maxY = 10;
+
+      const expectedResult = [
+        { x: 0, y: 0 },
+        { x: 25, y: 0 },
+        { x: 50, y: 0 },
+        { x: 75, y: 0 },
+        { x: 100, y: 0.0001 },
+      ];
+      const actualResult = normalizeDataset(data, { minX, maxX, minY, maxY });
+
+      expect(actualResult).toEqual(expectedResult);
+    });
   });
 });
