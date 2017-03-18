@@ -41,6 +41,7 @@ class App extends Component {
       strokeWidth: 2,
       gradient: defaultGradient,
       strokeLinecap: defaultLinecap,
+      fill: false,
     };
   }
 
@@ -53,7 +54,7 @@ class App extends Component {
   }
 
   render() {
-    const { gradient, radius, strokeWidth, strokeLinecap } = this.state;
+    const { gradient, radius, strokeWidth, strokeLinecap, fill } = this.state;
 
     return (
       <div className="app">
@@ -70,6 +71,7 @@ class App extends Component {
           radius={radius}
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
+          fill={fill ? gradient[0] : 'none'}
         />
 
         <TabGroup>
@@ -94,6 +96,7 @@ class App extends Component {
               params={this.state}
               gradients={gradients}
               linecaps={linecaps}
+              fill={fill}
               handleUpdate={this.updateTrendParam}
             />
           ) : (

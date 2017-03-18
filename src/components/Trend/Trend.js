@@ -28,6 +28,7 @@ const propTypes = {
   padding: PropTypes.number,
   radius: PropTypes.number,
   gradient: PropTypes.arrayOf(PropTypes.string),
+  fill: PropTypes.string,
 };
 
 const defaultProps = {
@@ -38,6 +39,7 @@ const defaultProps = {
   autoDraw: false,
   autoDrawDuration: 2000,
   autoDrawEasing: 'ease',
+  fill: 'none',
 };
 
 class Trend extends Component {
@@ -112,6 +114,7 @@ class Trend extends Component {
       padding,
       radius,
       gradient,
+      fill,
     } = this.props;
 
     // We need at least 2 points to draw a graph.
@@ -165,7 +168,7 @@ class Trend extends Component {
           ref={(elem) => { this.path = elem; }}
           id={`react-trend-${this.trendId}`}
           d={path}
-          fill="none"
+          fill={fill}
           stroke={gradient ? `url(#${this.gradientId})` : undefined}
         />
       </svg>

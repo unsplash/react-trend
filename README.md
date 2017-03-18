@@ -257,3 +257,17 @@ Note that in _most_ cases it is sufficient to leave this blank, and just control
 ```js
 <Trend width={200} height={200} />
 ```
+
+#### `fill`
+| Type     | Required | Default     |
+|----------|----------|-------------|
+| String   | ✕        | `'none'` |
+
+Set the fill for the trend line. This does not animate along with autoDraw.
+
+When left out or set to 'none' the trend will not fill. 
+
+###### Example
+```js
+<Trend fill={'#2e2e80'} />
+```
