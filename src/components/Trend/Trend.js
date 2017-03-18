@@ -43,6 +43,10 @@ class Trend extends Component {
     // Trend components on a page, so that they can have different keyframe
     // animations.
     this.trendId = generateId();
+
+    this.state = {
+      isInterpolating: false,
+    };
   }
 
   componentDidMount() {
@@ -59,6 +63,12 @@ class Trend extends Component {
       });
 
       injectStyleTag(css);
+    }
+  }
+
+  componentDidUpdate(oldProps) {
+    if (this.props.data !== oldProps.data) {
+      console.log('New data!');
     }
   }
 
