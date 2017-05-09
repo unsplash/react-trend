@@ -23,7 +23,9 @@
     "lint:fix": "eslint . --fix",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
   "peerDependencies": {
     "react": ""
   },
