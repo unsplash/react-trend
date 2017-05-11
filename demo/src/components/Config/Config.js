@@ -19,9 +19,10 @@ const propTypes = {
   }).isRequired,
   gradients: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   linecaps: PropTypes.arrayOf(PropTypes.string),
+  fill: PropTypes.string.isRequired,
 };
 
-const Config = ({ handleUpdate, params, gradients, linecaps }) => (
+const Config = ({ handleUpdate, params, gradients, linecaps, fill }) => (
   <Row className="config">
     <Column>
       <ConfigField label="Colour">
@@ -44,6 +45,14 @@ const Config = ({ handleUpdate, params, gradients, linecaps }) => (
             {linecap}
           </Toggle>
         ))}
+      </ConfigField>
+      <ConfigField label="Fill">
+        <Toggle
+          isActive={fill}
+          handleClick={() => handleUpdate({ fill: !fill })}
+        >
+          fill
+        </Toggle>
       </ConfigField>
     </Column>
     <Column>

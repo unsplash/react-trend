@@ -35,6 +35,7 @@ const YourComponent = () => (
     radius={${params.radius}}
     strokeWidth={${params.strokeWidth}}
     strokeLinecap={'${params.strokeLinecap}'}
+    fill={'${params.fill ? params.gradient[0] : 'none'}'}
   />
 );
   `;
