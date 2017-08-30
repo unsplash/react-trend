@@ -16,6 +16,7 @@ const propTypes = {
     radius: PropTypes.number.isRequired,
     strokeWidth: PropTypes.number.isRequired,
     strokeLinecap: PropTypes.string.isRequired,
+    highlight: PropTypes.arrayOf(PropTypes.number, PropTypes.number).isRequired,
   }).isRequired,
 };
 
@@ -35,6 +36,8 @@ const YourComponent = () => (
     radius={${params.radius}}
     strokeWidth={${params.strokeWidth}}
     strokeLinecap={'${params.strokeLinecap}'}
+    rangeHighlight={[${params.rangeHighlight.join(', ')}]} 
+    rangeHighlightColor={'${params.rangeHighlightColor}'}        
   />
 );
   `;

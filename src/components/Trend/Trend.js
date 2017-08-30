@@ -29,6 +29,8 @@ const propTypes = {
   padding: PropTypes.number,
   radius: PropTypes.number,
   gradient: PropTypes.arrayOf(PropTypes.string),
+  rangeHighlight: PropTypes.arrayOf(PropTypes.number, PropTypes.number),  
+  rangeHighlightColor: PropTypes.string,
 };
 
 const defaultProps = {
@@ -39,6 +41,8 @@ const defaultProps = {
   autoDraw: false,
   autoDrawDuration: 2000,
   autoDrawEasing: 'ease',
+  rangeHighlight: [],
+  rangeHighlightColor: 'transparent'  
 };
 
 class Trend extends Component {
@@ -113,6 +117,8 @@ class Trend extends Component {
       padding,
       radius,
       gradient,
+      rangeHighlight,
+      rangeHighlightColor,
     } = this.props;
 
     // We need at least 2 points to draw a graph.
@@ -153,6 +159,21 @@ class Trend extends Component {
       ? buildSmoothPath(normalizedValues, { radius })
       : buildLinearPath(normalizedValues);
 
+    let rangeHighlightStart;
+    let rangeHighlightEnd;
+
+    if (rangeHighlight.length === 2) {
+      const [first, second] = rangeHighlight;
+
+      rangeHighlightStart = normalizedValues[first].x;
+      rangeHighlightEnd = normalizedValues[second].x;
+
+      const gap = normalizedValues[first + 1].x - normalizedValues[first].x;
+
+      rangeHighlightStart -= gap / 2;
+      rangeHighlightEnd += gap / 2;
+    }
+
     return (
       <svg
         width={svgWidth}
@@ -161,7 +182,14 @@ class Trend extends Component {
         {...this.getDelegatedProps()}
       >
         {gradient && this.renderGradientDefinition()}
-
+        {rangeHighlightStart && rangeHighlightEnd &&
+        <rect
+          x={rangeHighlightStart} y={0}
+          stroke="transparent"
+          strokeWidth={0}
+          fill={rangeHighlightColor}
+          width={rangeHighlightEnd - rangeHighlightStart} height={viewBoxHeight}
+        />}
         <path
           ref={(elem) => { this.path = elem; }}
           id={`react-trend-${this.trendId}`}

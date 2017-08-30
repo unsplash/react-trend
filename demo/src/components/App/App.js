@@ -41,6 +41,8 @@ class App extends Component {
       strokeWidth: 2,
       gradient: defaultGradient,
       strokeLinecap: defaultLinecap,
+      rangeHighlight: [5, 5],
+      rangeHighlightColor: 'rgba(0, 0, 0, 0.1)',
     };
   }
 
@@ -53,7 +55,7 @@ class App extends Component {
   }
 
   render() {
-    const { gradient, radius, strokeWidth, strokeLinecap } = this.state;
+    const { gradient, radius, strokeWidth, strokeLinecap, rangeHighlight, rangeHighlightColor } = this.state;
 
     return (
       <div className="app">
@@ -70,6 +72,8 @@ class App extends Component {
           radius={radius}
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
+          rangeHighlight={rangeHighlight}
+          rangeHighlightColor={rangeHighlightColor}
         />
 
         <TabGroup>
