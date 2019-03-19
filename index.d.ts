@@ -1,7 +1,7 @@
 // Type definitions for React Trend 1.2.4
 // Project: http://unsplash.github.io/react-trend/, https://github.com/unsplash/react-trend
 // Definitions by: Jared Palmer <https://github.com/jaredpalmer>
-// TypeScript Version: 2.8
+// TypeScript Version: 2.1
 
 declare module 'react-trend' {
   export type TrendDataPoint = number | { value: number };
