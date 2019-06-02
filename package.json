@@ -4,6 +4,7 @@
   "description": "react-trend React component",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "typings": "index.d.ts",
   "files": [
     "css",
     "es",
@@ -43,12 +44,10 @@
     "react-slider": "0.7.0",
     "react-syntax-highlighter": "4.0.1"
   },
-  "contributors": [
-    {
-      "name": "Joshua Comeau",
-      "email": "josh@unsplash.com"
-    }
-  ],
+  "contributors": [{
+    "name": "Joshua Comeau",
+    "email": "josh@unsplash.com"
+  }],
   "license": "MIT",
   "repository": {
     "type": "git",
